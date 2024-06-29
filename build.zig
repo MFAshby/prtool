@@ -16,6 +16,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     const vaxis = b.dependency("vaxis", .{ .target = target, .optimize = optimize });
+    const sqlite = b.dependency("sqlite", .{ .target = target, .optimize = optimize });
 
     const lib = b.addStaticLibrary(.{
         .name = "prtool",
@@ -26,6 +27,8 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     lib.root_module.addImport("vaxis", vaxis.module("vaxis"));
+    lib.root_module.addImport("sqlite", sqlite.module("sqlite"));
+    lib.linkLibrary(sqlite.artifact("sqlite"));
 
     // This declares intent for the library to be installed into the standard
     // location when the user invokes the "install" step (the default step when
@@ -39,6 +42,8 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     exe.root_module.addImport("vaxis", vaxis.module("vaxis"));
+    exe.root_module.addImport("sqlite", sqlite.module("sqlite"));
+    exe.linkLibrary(sqlite.artifact("sqlite"));
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default

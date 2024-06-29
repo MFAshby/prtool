@@ -27,6 +27,10 @@
             .url = "https://github.com/rockorager/libvaxis/archive/b84f9e58a6fd71328f55f994f8775f81f9849a08.tar.gz",
             .hash = "1220883908f895fdfda768678e07d45754ea5f77a3c655ff3faae44b6a04fdfa134e",
         },
+        .sqlite = .{
+            .url = "https://github.com/vrischmann/zig-sqlite/archive/878f8cf92b308dabe2dce9e24bd7849e005f7ab5.tar.gz",
+            .hash = "1220a3ff3c8e2a41fe0fe73e795e0eee4c3882edceef8ef16b0b250c7895709a9192",
+        },
     },
     .paths = .{
         "build.zig",
